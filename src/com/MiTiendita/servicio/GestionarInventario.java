@@ -70,6 +70,20 @@ public class GestionarInventario {
     }
 
     /**
+     * Actualización de Nombre (con validación).
+     */
+    public void actualizarNombreProducto(int id, String nuevoNombre) {
+        Producto producto = buscarProductoPorId(id);
+        if (producto != null) {
+            producto.setNombreProducto(nuevoNombre);
+            System.out.println("✅ Nombre del producto ID " + id + " actualizado a '" + nuevoNombre + "'.");
+        } else {
+            System.out.println("❌ Error: Producto con ID " + id + " no encontrado.");
+        }
+    }
+
+
+    /**
      * Actualización de Stock (con validación).
      */
     public void actualizarStockProducto(int id, int nuevoStock) {

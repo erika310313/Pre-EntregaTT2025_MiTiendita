@@ -1,5 +1,6 @@
 package com.MiTiendita.servicio;
 
+import com.MiTiendita.excepciones.StockInsuficienteException;
 import com.MiTiendita.modelo.LineaPedido;
 import com.MiTiendita.modelo.Pedido;
 import com.MiTiendita.modelo.Producto;
@@ -35,7 +36,7 @@ public class GestionPedidos {
      * Solicitar productos y validar stock. Intenta agregar un producto a un pedido.
      */
 
-    public boolean agregarLineaAlPedido(Pedido pedido, int idProducto, int cantidadSolicitada){
+    public boolean agregarLineaAlPedido(Pedido pedido, int idProducto, int cantidadSolicitada) throws StockInsuficienteException{
         Producto producto = servicioDeInventario.buscarProductoPorId(idProducto);
 
         if(producto == null){
@@ -43,9 +44,16 @@ public class GestionPedidos {
             return false;
         }
 
-        if(producto.getStock() < cantidadSolicitada){
-            System.out.println("❌ No hay suficiente stock para el producto '" + producto.getNombreProducto() + "'. Stock disponible: " + producto.getStock());
+        if (cantidadSolicitada <= 0) {
+            System.out.println("❌ La cantidad solicitada debe ser mayor que cero.");
             return false;
+        }
+
+        if(producto.getStock() < cantidadSolicitada){
+            throw new StockInsuficienteException("❌ No hay suficiente stock para el producto '"
+                    + producto.getNombreProducto() + "'. Stock disponible: " + producto.getStock()
+                    + ", Cantidad solicitada: " + cantidadSolicitada);
+
         }
 
         // Si hay stock suficiente, se agrega la línea al pedido
