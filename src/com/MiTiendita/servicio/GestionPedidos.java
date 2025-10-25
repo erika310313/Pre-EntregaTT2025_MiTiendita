@@ -21,7 +21,7 @@ public class GestionPedidos {
         this.pedidosRealizados = new ArrayList<>();
     }
 
-    // ------ MÉtodos ------ //
+    // ------ Métodos ------ //
 
     /**
      * Inicia la creación de un nuevo pedido vacío.
@@ -83,6 +83,20 @@ public class GestionPedidos {
         this.pedidosRealizados.add(pedido);
         System.out.println("✅ Pedido ID: " + pedido.getId() + " confirmado y guardado exitosamente.");
         System.out.println(pedido);
+    }
+
+    public void mostrarPedidosRealizados(){
+        if(pedidosRealizados.isEmpty()){
+            System.out.println("⚠️ No se han realizado pedidos aún.");
+            return;
+        }
+
+        System.out.println("\n ------ LISTA DE PEDIDOS REALIZADOS ------");
+
+        for (Pedido pedido : pedidosRealizados) {
+            System.out.println(pedido);
+        }
+        System.out.println("------------------------------------------");
     }
 
 
