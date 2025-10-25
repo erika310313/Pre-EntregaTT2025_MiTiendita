@@ -49,13 +49,14 @@ Fue creado como un ejercicio práctico para aplicar los conceptos fundamentales 
 
 El proyecto está organizado en los siguientes paquetes para una correcta separación de responsabilidades:
 
-src/ 
-└── com/ 
-    └── MiTiendita/ 
-        ├── excepciones/ (Excepciones personalizadas como StockInsuficienteException) 
-        ├── modelo/ (Clases Producto, Pedido, LineaPedido) 
-        ├── principal/ (Clase Main para ejecutar la app y mostrar el menú) 
-        └── servicios/ (Lógica de negocio: GestionarInventario, GestionPedidos)
+src/
+    └── `com/`
+        └── `MiTiendita/`
+        ├── `excepciones/` (Excepciones personalizadas como `StockInsuficienteException`)
+        ├── `modelo/` (Clases `Producto`, `Pedido`, `LineaPedido`)
+        ├── `principal/` (Clase `Main` para ejecutar la app y mostrar el menú)
+        └── `servicios/` (Lógica de negocio: `GestionarInventario`, `GestionPedidos`)
+
 
 
 ## 👤 Erika Oropeza (2025)
